@@ -9,6 +9,7 @@ Neuroverkot ovat viime vuosina olleet suosittu tapa ratkaista koneoppimisen onge
 
 #### Mitä syötteitä ohjelma saa ja miten näitä käytetään
 Ohjelma saa syötteenä luokiteltavan aineiston tai approksimoitavan funktion, kouluttaa valitulla strategialla neuroverkon ja palauttaa tiedon saavutetuista tuloksista.
+Ainakin toistaiseksi aineiston hakemiseen käytetään [ND4J](http://nd4j.org)-projektin avoimen lähdekoodin ohjelmistoa.
 
 #### Tavoitteena olevat aika- ja tilavaativuudet (mm. O-analyysit)
 Eri koulutusmenetelmien aikavaatimukset ovat yksi projektin aikana tutkittavista asioista. 

@@ -12,29 +12,39 @@ public class Neuron {
 
     private List<Double> weights;
 
-    public Neuron(int inputs) {
-        Random r = new Random();
+    /**
+     * creates a new neuron with random weights
+     * @param inputs number of inputs
+     */
+    public Neuron(int inputs, Random rng) {
         weights = new ArrayList();
         // init all inputs plus bias weight
         for (int i = 0; i < inputs + 1; i++) {
-            weights.add(r.nextDouble() * 2 - 1);
+            weights.add(rng.nextDouble() * 2 - 1);
         }
     }
 
+    /**
+     * copy constructor
+     * @param other
+     */
     public Neuron(Neuron other) {
-        assert (false);//not implemented
+        this.weights = new ArrayList(other.weights);     
     }
 
-    public double getResult(List<Double> input) {
+    /**
+     * generates output from given input
+     * @param input the input. Required: input.size() < neuron weights count.
+     * @return output
+     */
+    public double getResult(List<Double> input, ActivationFunction activationFunction) {
+        int inputSize = input.size();
+        assert (inputSize < weights.size());
         double sum = 0;
-        for (int i = 0; i < input.size(); i++) {
+        for (int i = 0; i < inputSize; i++) {
             sum += input.get(i) * weights.get(i);
         }
         sum += weights.get(weights.size() - 1); //bias
-        return sigmoid(sum);
-    }
-
-    private double sigmoid(double input) {
-        return (1 / (1 + Math.exp(-input)));
+        return activationFunction.calculate(sum);
     }
 }
