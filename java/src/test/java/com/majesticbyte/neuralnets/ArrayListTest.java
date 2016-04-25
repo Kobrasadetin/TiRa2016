@@ -23,49 +23,6 @@ public class ArrayListTest {
     public void setUp() {
     }
 
-    @Test
-    public void testGet() {
-        System.out.println("get");
-        int index = 0;
-        ArrayList instance = new ArrayList();
-        Object expResult = null;
-        Object result = instance.get(index);
-        assertEquals(expResult, result);
-    }
 
-    @Test
-    public void testSize() {
-        System.out.println("size");
-        ArrayList instance = new ArrayList();
-        int expResult = 0;
-        int result = instance.size();
-        assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testClear() {
-        System.out.println("clear");
-        ArrayList instance = new ArrayList();
-        instance.clear();
-    }
-
-    @Test
-    public void testAdd() {
-        System.out.println("add");
-        Object item = null;
-        ArrayList instance = new ArrayList();
-        boolean expResult = false;
-        boolean result = instance.add(item);
-        assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testIterator() {
-        System.out.println("iterator");
-        ArrayList instance = new ArrayList();
-        Iterator expResult = null;
-        Iterator result = instance.iterator();
-        assertEquals(expResult, result);
-    }
     
 }
