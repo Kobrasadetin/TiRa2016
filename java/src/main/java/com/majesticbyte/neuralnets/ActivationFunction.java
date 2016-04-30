@@ -12,5 +12,4 @@ package com.majesticbyte.neuralnets;
 public interface ActivationFunction {
 
     double calculate(double input);
-    
 }

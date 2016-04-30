@@ -13,6 +13,12 @@ public class NeuralNet {
     private final List<Layer> layers;
     private ActivationFunction activationFunction;
 
+    /**
+     *
+     * @param structure
+     * @param activationFunction
+     * @param rng
+     */
     public NeuralNet(List<Integer> structure, ActivationFunction activationFunction, Random rng) {
         assert (structure.size() >= 2);
         this.activationFunction = activationFunction;
@@ -22,6 +28,11 @@ public class NeuralNet {
         }
     }
 
+    /**
+     *
+     * @param input
+     * @return
+     */
     public List<Double> getResult(List<Double> input) {
         return recursiveGetResult(input, layers.size() - 1);
     }

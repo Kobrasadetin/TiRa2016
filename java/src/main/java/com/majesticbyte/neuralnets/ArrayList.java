@@ -8,6 +8,7 @@ import java.util.NoSuchElementException;
 /**
  *
  * @author mkarjanm
+ * @param <T> object type template
  */
 public class ArrayList<T> implements List<T> {
 
@@ -23,14 +24,10 @@ public class ArrayList<T> implements List<T> {
 
     ArrayList(List<T> other) {
         int size = other.size();
-        items = new Object[size];
-        this.limitIndex = size-1;
-        //TODO: implement toArray in List and arraycopy here
-        for (int i = 0; i < size; i++)
-        {
-            this.add(other.get(i));
-        }
-    }
+        items = other.toArray();
+        itemCount = size;
+        this.limitIndex = size-1;      
+    }   
 
     @Override
     public T get(int index) {
@@ -52,10 +49,10 @@ public class ArrayList<T> implements List<T> {
     @Override
     public boolean add(T item) {
         if (itemCount == limitIndex) {
-            Object[] newcontainer = new Object[limitIndex + 32];
+            limitIndex = (limitIndex << 1) | 1;
+            Object[] newcontainer = new Object[limitIndex];
             System.arraycopy(items, 0, newcontainer, 0, itemCount);
             items = newcontainer;
-            limitIndex+=32;
         }
         items[itemCount++] = item;
         return true;
@@ -72,11 +69,18 @@ public class ArrayList<T> implements List<T> {
         return new ListIterator(this);
     }
 
+    @Override
+    public Object[] toArray() {
+        Object[] newArray = new Object[itemCount];
+        System.arraycopy(items, 0, newArray, 0, itemCount);
+        return newArray;
+    }
+
     // Inner class example
     private class ListIterator<T> implements
             Iterator<T> {
 
-        private final int cursor;
+        private int cursor;
         private final ArrayList<T> list;
 
         public ListIterator(ArrayList<T> list) {
@@ -86,19 +90,20 @@ public class ArrayList<T> implements List<T> {
 
         @Override
         public boolean hasNext() {
-            return list.size() <= cursor;
+            return list.size() > cursor;
         }
 
         @Override
         public T next() {
             if (this.hasNext()) {
-                return list.get(cursor);
+                return list.get(cursor++);
             }
-            throw new NoSuchElementException();
+            throw new NoSuchElementException();           
         }
 
         @Override
         public void remove() {
+            //TODO: implement
             throw new UnsupportedOperationException();
         }
     }

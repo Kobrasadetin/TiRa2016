@@ -10,5 +10,5 @@ interface List<T> extends Iterable<T>{
     int size();
     void clear();
     boolean add(T item);
-    
+    Object[] toArray();
 }
