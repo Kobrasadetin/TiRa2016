@@ -27,6 +27,12 @@ public class NeuralNet {
             layers.add(new Layer(structure.get(i - 1), structure.get(i), rng));
         }
     }
+    
+    public  NeuralNet(NeuralNet other)
+    {
+        this.activationFunction = other.activationFunction;
+        this.layers = new ArrayList(other.layers);
+    }
 
     /**
      *
