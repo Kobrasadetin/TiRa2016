@@ -33,6 +33,11 @@ public class NeuralNet {
         this.activationFunction = other.activationFunction;
         this.layers = new ArrayList(other.layers);
     }
+    
+    public int inputCount()
+    {
+        return layers.get(0).size();
+    }
 
     /**
      *

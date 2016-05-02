@@ -2,6 +2,7 @@
 package com.majesticbyte.neuralnets;
 
 import java.lang.reflect.Array;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -16,18 +17,26 @@ public class ArrayList<T> implements List<T> {
     private int itemCount;
     private int limitIndex;
 
-    ArrayList() {
+    public ArrayList() {
         this.items = new Object[32];
         this.limitIndex = 31;
         this.itemCount = 0;
     }
 
-    ArrayList(List<T> other) {
+    public ArrayList(List<T> other) {
         int size = other.size();
         items = other.toArray();
         itemCount = size;
         this.limitIndex = size-1;      
     }   
+    
+    public ArrayList(Collection<? extends T> c)
+    {
+        int size = c.size();
+        items = c.toArray();
+        itemCount = size;
+        this.limitIndex = size-1;  
+    }
 
     @Override
     public T get(int index) {
@@ -42,8 +51,9 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public void clear() {
-        itemCount = 0;
-        items = new Object[32];
+        this.itemCount = 0;
+        this.items = new Object[32];
+        this.limitIndex = 31;
     }
 
     @Override

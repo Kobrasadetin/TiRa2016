@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.majesticbyte.neuralnets;
+package training;
 
 /**
  *
  * @author mkarjanm
  */
-public interface ActivationFunction {
-
-    double calculate(double input);
-    double derivative(double input);
+public class TrainingSetup {
+    private int epochs;
 }

@@ -1,4 +1,3 @@
-
 package com.majesticbyte.neuralnets;
 
 //import java.util.ArrayList;
@@ -7,6 +6,7 @@ import java.util.Random;
 
 /**
  * Layer contains Neurons
+ *
  * @author mkarjanm
  */
 public class Layer {
@@ -22,6 +22,7 @@ public class Layer {
 
     /**
      * returns calculation result for given input and activation function
+     *
      * @param input input vector
      * @param activationFunction activation function
      * @return
@@ -36,10 +37,15 @@ public class Layer {
 
     /**
      * not implemented
+     *
      * @param error
      */
     public void backpropagateError(double error) {
         assert (false);//not implemented
+    }
+
+    public int size() {
+        return neurons.size();
     }
 
 }
