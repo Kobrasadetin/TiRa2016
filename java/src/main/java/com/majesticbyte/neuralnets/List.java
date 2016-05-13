@@ -4,8 +4,9 @@ package com.majesticbyte.neuralnets;
 /**
  *
  * @author mkarjanm
+ * @param <T>
  */
-interface List<T> extends Iterable<T>{
+public interface List<T> extends Iterable<T>{
     T get (int index);
     int size();
     void clear();

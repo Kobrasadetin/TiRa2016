@@ -2,6 +2,7 @@
 package com.majesticbyte.neuralnets;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -84,6 +85,11 @@ public class ArrayList<T> implements List<T> {
         Object[] newArray = new Object[itemCount];
         System.arraycopy(items, 0, newArray, 0, itemCount);
         return newArray;
+    }
+    
+    @Override
+    public String toString(){
+        return Arrays.toString(this.toArray());
     }
 
     // Inner class example

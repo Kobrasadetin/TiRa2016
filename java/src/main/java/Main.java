@@ -9,6 +9,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.deeplearning4j.datasets.iterator.impl.MnistDataSetIterator;
 import training.BackpropagationTraining;
+import training.TrainingData;
+import training.TrainingProgram;
+import training.TrainingSetup;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,7 +32,10 @@ public class Main {
             MnistDataSetIterator it = new MnistDataSetIterator(5, 100);
             ArrayList<Integer> netStructure = new ArrayList(Arrays.asList(784,256,10));
             NeuralNet net = new NeuralNet(netStructure, new Sigmoid(), rng);
-            BackpropagationTraining bp = new BackpropagationTraining(it.next(), net);
+            BackpropagationTraining bp = new BackpropagationTraining(net);
+            TrainingSetup setup = new TrainingSetup(bp, 5);
+            TrainingProgram p =  new TrainingProgram(setup, new TrainingData(it.next()));
+            p.run();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }

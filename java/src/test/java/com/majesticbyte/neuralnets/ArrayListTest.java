@@ -51,7 +51,6 @@ public class ArrayListTest {
     @Test
     public void testCopyconstructor() {
         System.out.println("copyConstructor");      
-        int expResult = 256;
         for (int i = 0; i<256; i++)
         {
             instance.add(new Double(i+1233));

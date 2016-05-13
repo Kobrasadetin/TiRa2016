@@ -32,6 +32,7 @@ public class Layer {
         for (Neuron neuron : neurons) {
             output.add(neuron.getResult(input, activationFunction));
         }
+        System.out.println("Calculating result of size "+output.size());
         return output;
     }
 

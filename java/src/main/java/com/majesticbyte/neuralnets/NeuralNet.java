@@ -23,7 +23,7 @@ public class NeuralNet {
         assert (structure.size() >= 2);
         this.activationFunction = activationFunction;
         layers = new ArrayList();
-        for (int i = 1; i < structure.size() - 1; i++) {
+        for (int i = 1; i < structure.size(); i++) {
             layers.add(new Layer(structure.get(i - 1), structure.get(i), rng));
         }
     }
@@ -52,7 +52,17 @@ public class NeuralNet {
         if (layer == 0) {
             return layers.get(0).getResult(input, activationFunction);
         } else {
-            return layers.get(layer).getResult(recursiveGetResult(input, layer), activationFunction);
+            return layers.get(layer).getResult(recursiveGetResult(input, layer -1), activationFunction);
         }
+    }
+    
+    public void backpropagateError(List<Double> error)
+    {
+        //TODO
+        throw new UnsupportedOperationException();
+    }
+    
+    private List<Double> recursiveBackprop(List<Double> error, int layer) {       
+        throw new UnsupportedOperationException();
     }
 }
