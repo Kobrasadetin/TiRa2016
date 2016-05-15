@@ -21,8 +21,10 @@ public class TrainingData {
     private final int outputs;
     private final List<List<Double>> input;
     private final List<List<Double>> output;
+    private final String dataName;
 
     public TrainingData(DataSet dataset) {
+        this.dataName="MNIST";
         this.size = dataset.numExamples();
         this.inputs = dataset.numInputs();
         this.outputs = dataset.numOutcomes();
@@ -68,4 +70,11 @@ public class TrainingData {
         }
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "{" +dataName + ", size=" + size + '}';
+    }
+    
+    
 }

@@ -2,12 +2,14 @@
 import com.majesticbyte.neuralnets.ArrayList;
 import com.majesticbyte.neuralnets.NeuralNet;
 import com.majesticbyte.neuralnets.Sigmoid;
+import gui.MainFrame;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.deeplearning4j.datasets.iterator.impl.MnistDataSetIterator;
+import org.nd4j.linalg.dataset.DataSet;
 import training.BackpropagationTraining;
 import training.TrainingData;
 import training.TrainingProgram;
@@ -27,6 +29,7 @@ public class Main {
     
     public static void main(String args[])
     {
+        NetworkTester tester = new NetworkTester();       
         Random rng = new Random();
         try {
             MnistDataSetIterator it = new MnistDataSetIterator(5, 100);
@@ -34,7 +37,11 @@ public class Main {
             NeuralNet net = new NeuralNet(netStructure, new Sigmoid(), rng);
             BackpropagationTraining bp = new BackpropagationTraining(net);
             TrainingSetup setup = new TrainingSetup(bp, 5);
-            TrainingProgram p =  new TrainingProgram(setup, new TrainingData(it.next()));
+            DataSet set = it.next();
+            TrainingProgram p =  new TrainingProgram(setup, new TrainingData(set));
+            tester.addProgram(p);
+
+            
             p.run();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);

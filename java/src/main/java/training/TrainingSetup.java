@@ -14,6 +14,7 @@ import com.majesticbyte.neuralnets.NeuralNet;
 public class TrainingSetup {
     private NetworkTrainer trainer;
     private int epochs;
+    private int batchSize;
 
     public TrainingSetup(NetworkTrainer trainer, int epochs) {
         this.trainer = trainer;
@@ -27,6 +28,16 @@ public class TrainingSetup {
     public int getEpochs() {
         return epochs;
     }
+
+    public int getBatchSize() {
+        return batchSize;
+    }
+
+    @Override
+    public String toString() {
+        return "{" + trainer + ", epochs=" + epochs + ", batchSize=" + batchSize + '}';
+    }
+    
     
     
 }

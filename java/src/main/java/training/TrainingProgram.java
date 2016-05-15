@@ -24,4 +24,13 @@ public class TrainingProgram {
     {
         return setup.getTrainer().train(dataset, setup);
     }
+    
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(setup.toString());
+        sb.append(dataset.toString());
+        return sb.toString();
+    }
 }
