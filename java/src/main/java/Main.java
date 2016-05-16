@@ -37,9 +37,12 @@ public class Main {
             NeuralNet net = new NeuralNet(netStructure, new Sigmoid(), rng);
             BackpropagationTraining bp = new BackpropagationTraining(net);
             TrainingSetup setup = new TrainingSetup(bp, 5);
+            TrainingSetup setup2 = new TrainingSetup(bp, 3);
             DataSet set = it.next();
             TrainingProgram p =  new TrainingProgram(setup, new TrainingData(set));
+            TrainingProgram r = new TrainingProgram(setup2, new TrainingData(set));
             tester.addProgram(p);
+            tester.addProgram(r);
 
             
             p.run();

@@ -56,13 +56,19 @@ public class NeuralNet {
         }
     }
     
-    public void backpropagateError(List<Double> error)
-    {
-        //TODO
-        throw new UnsupportedOperationException();
+    public void backpropagateError(double[] error)
+    {         
+        int layerCount = layers.size();
+        double[][] deltas = new double[layerCount+1][];
+        deltas[layerCount] = error;
+        recursiveBackprop(deltas, layers.size()-1);
     }
     
-    private List<Double> recursiveBackprop(List<Double> error, int layer) {       
-        throw new UnsupportedOperationException();
+    private void recursiveBackprop(double[][] deltas, int layer) {
+        deltas[layer] = new double[layers.get(layer).size()];
+        layers.get(layer).backpropagateError(deltas[layer+1], deltas[layer], activationFunction );
+        if (layer > 0) {
+            recursiveBackprop(deltas, layer-1);
+        }
     }
 }

@@ -44,7 +44,7 @@ public class BackpropagationTraining implements NetworkTrainer{
             {
                 error[i] = result.get(i)-output.get(i);
             }
-            //TODO
+            net.backpropagateError(error);
             
         }
         return new TrainingResults(net);

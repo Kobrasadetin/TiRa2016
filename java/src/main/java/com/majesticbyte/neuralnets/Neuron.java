@@ -11,6 +11,7 @@ import java.util.Random;
 public class Neuron {
 
     private List<Double> weights;
+    private double output;
 
     /**
      * creates a new neuron with random weights
@@ -45,6 +46,14 @@ public class Neuron {
             sum += input.get(i) * weights.get(i);
         }
         sum += weights.get(weights.size() - 1); //bias
-        return activationFunction.calculate(sum);
+        output = activationFunction.calculate(sum);
+        return output;
+    }
+    
+    public void calculateDelta(double error, double[] delta, ActivationFunction activationFunction) {
+        assert (delta.length == weights.size());
+        for (int i = 0; i < weights.size() + 1; i++) {
+            delta[i] = error * activationFunction.derivative(output);
+        }
     }
 }

@@ -31,8 +31,8 @@ public class Layer {
         ArrayList output = new ArrayList();
         for (Neuron neuron : neurons) {
             output.add(neuron.getResult(input, activationFunction));
-        }
-        System.out.println("Calculating result of size "+output.size());
+        }        
+        System.out.println("Calculating result of size " + output.size());
         return output;
     }
 
@@ -41,8 +41,13 @@ public class Layer {
      *
      * @param error
      */
-    public void backpropagateError(double error) {
-        assert (false);//not implemented
+    public void backpropagateError(double[] error, double[] delta, ActivationFunction activationFunction) {
+        //TODO kesken
+        int i = 0;
+        for (Neuron neuron : neurons) {
+            for (int e = 0; e < error.length; e++) {
+            }
+        }
     }
 
     public int size() {
